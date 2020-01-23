@@ -1,0 +1,13 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 8,
+        // "sourceType": "script",
+        "ecmaFeatures": {},
+        "sourceType": "module"
+    },
+    "rules": {},
+    "env": {
+        "es6": true,
+        "node": true
+    }
+}
