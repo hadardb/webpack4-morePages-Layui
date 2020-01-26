@@ -1,0 +1,12 @@
+{{extend './layout.art'}}
+
+{{block 'title'}}{{title}}{{/block}}
+
+{{block 'head'}}
+{{/block}}
+
+{{block 'content'}}
+<p><img src="./octocat.png" alt="octocat"></p>
+<p>This is just an awesome page.</p>
+{{ include './mayart.art' }}
+{{/block}}

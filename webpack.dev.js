@@ -3,7 +3,7 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-13 15:13:36
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-23 13:51:22
+ * @LastEditTime : 2020-01-26 18:40:42
  */
 const path = require('path')
 const { smart } = require('webpack-merge')
@@ -34,8 +34,8 @@ module.exports = smart(base,{
                 ]
             },
             {
-                test: /\.(png|jpg|gif)$/,
-                include: path.resolve('src'),
+                test: /\.(png|jpg|gif|svg)$/,
+                // include: path.resolve('src'),
                 use: [
                     {// 解析图片资源
                         loader: 'file-loader',
@@ -50,7 +50,7 @@ module.exports = smart(base,{
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: [
-                    {// 解析图片资源
+                    {// 解析文字资源
                         loader: 'file-loader',
                         options: {
                             esModule: false,    // 配置false 与html-withimg-loader 兼容

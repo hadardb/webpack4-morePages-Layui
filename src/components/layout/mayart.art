@@ -1,0 +1,7 @@
+{{if myarr}}
+    {{ each myarr }}
+    <h2>
+        {{ $index }} {{ $value }}
+    </h2>
+    {{/each}}
+{{/if}} 

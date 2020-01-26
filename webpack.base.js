@@ -3,7 +3,7 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-15 11:15:03
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-23 13:51:34
+ * @LastEditTime : 2020-01-26 18:52:41
  */
 /*
  * @name: 文件
@@ -12,6 +12,7 @@
  * @LastEditors  : Haojin Sun
  * @LastEditTime : 2020-01-17 17:35:48
  */
+
 const path = require('path')
 const fs = require('fs')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -24,15 +25,16 @@ const copyWebpackPlugin = require('copy-webpack-plugin')
 
 // bannerPlugin  // 内置 为js添加共同头部注释
 module.exports = {
-    entry: fs.readdirSync(`${__dirname}/src/views`).reduce((entries, dir) => {
-        let jsFile = path.join(`${__dirname}/src/views`, dir, `${dir}.js`)
-        if (fs.existsSync(jsFile)) {  // 如果js存在
-            entries[dir] = jsFile
-        }
-        return entries
-    }, {}),    //入口
+    entry: setEntry(),
+    // entry: fs.readdirSync(`${__dirname}/src/views`).reduce((entries, dir) => {
+    //     let jsFile = path.join(`${__dirname}/src/views`, dir, `${dir}.js`)
+    //     if (fs.existsSync(jsFile)) {  // 如果js存在
+    //         entries[dir] = jsFile
+    //     }
+    //     return entries
+    // }, {}),    //入口
     output: {
-        filename: '[name].[hash:8].js',  // 构建后的名称
+        filename: 'js/[name].[hash:8].js',  // 构建后的名称
         path: path.resolve(__dirname, 'dist'),    // 路径必须是绝对路径
         // publicPath: 'http://localhost:3000/', // 静态路径前缀  会对所有打包资源添加  如需对单独资源添加 在对应loader下添加publicPath
     },
@@ -57,6 +59,14 @@ module.exports = {
                 },
 
             },
+            {
+                test: /\.art$/,
+                loader: "art-template-loader",
+                options: {
+                    // art-template options (if necessary)
+                    // @see https://github.com/aui/art-template
+                },
+            },
             // {
             //     test: /\.(png|jpg|gif)$/,
             //     include: path.resolve('src'),
@@ -71,7 +81,7 @@ module.exports = {
             //         }
             //     ],
             // },
-            
+
             {
                 test: /\.js$/,
                 include: path.resolve(__dirname, 'src'),
@@ -85,14 +95,13 @@ module.exports = {
                             ],
                             plugins: [
                                 "@babel/plugin-transform-runtime"
-                            ],
+                            ]
                         }
                     }
                 ]
             },
             {
                 test: /\.css$/,
-                include: path.resolve(__dirname, 'src'),
                 use: [
                     // {
                     //     loader: 'style-loader', // 将css 插入到head中
@@ -122,6 +131,12 @@ module.exports = {
 
                     'postcss-loader',
                     'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: [`${__dirname}/src/css/main.scss`]       // 插入全局scss
+                        }
+                    }
                 ]
             },
             // {            // 如果require引入， 可以使用该插件变为全局变量
@@ -148,13 +163,16 @@ module.exports = {
     // 解析第三方包 配置
     resolve: {
         // 省略扩展名  依次解析
-        extensions: ['.js', '.css'],
+        extensions: ['.js', '.scss', '.css', '.art'],
         // 起别名
         alias: {
             'img': path.resolve(__dirname, 'src/img/'),
             'js': path.resolve(__dirname, 'src/js/'),
             'css': path.resolve(__dirname, 'src/css/'),
-            '@': path.resolve(__dirname, 'src/components/')
+            '@': path.resolve(__dirname, 'src/'),
+            '_c': path.resolve(__dirname, 'src/components'),
+            'plugins': path.resolve(__dirname, 'src/plugins/'),
+            // 'layui':  path.resolve(__dirname, 'node_modules/layui-src/dist/'),   // layui没有用传统模块化这一套 require进去也没用 必须打包整个layui出去
         }
     }
 }
@@ -179,12 +197,13 @@ function insertAtTop(element) {
     window._lastElementInsertedByStyleLoader = element;
 }
 
+
 // 管理插件
 function setPlugins() {
     var data = [   // 存放插件
         // 打包css
         new MiniCssExtractPlugin({
-            filename: 'css/[name].css',
+            filename: 'css/[name].[hash:8].css',
         }),
         // 给模块传递全局变量
         new webpack.ProvidePlugin({
@@ -197,9 +216,12 @@ function setPlugins() {
         // new webpack.IgnorePlugin(),
 
         // 拷贝文件
-        // new copyWebpackPlugin([
-        //     {from:'mock',to:'./mock'}
-        // ])
+        new copyWebpackPlugin([
+            {
+                from: `${__dirname}/src/plugins`,
+                to: './plugins'
+            }
+        ])
     ]
     fs.readdirSync(`${__dirname}/src/views`).reduce((entries, dir) => {
         let jsFile = path.join(`${__dirname}/src/views`, dir, `${dir}.js`)
@@ -210,23 +232,23 @@ function setPlugins() {
     return data
 }
 
-
 // 统一创建html插件
 function getHtmlConfig(name) {
     return {
         template: `./src/views/${name}/${name}.html`,
-        filename: `./views/${name}.html`,
+        filename: `./${name}.html`,
         title: name,
         // 设置为true或'body'会将js模块放入模板底部，设置为'head'会将js模块放入head中
         inject: 'body',
-        // minify: {
-        //     removeAttributeQuotes: true,     //去除双引号
-        //     collapseWhitespace: true //压缩成一行
-        // },
+        minify: process.env.NODE_ENV === "development" ? false : {
+            removeComments: true, //移除HTML中的注释
+            collapseWhitespace: true, //折叠空白区域 也就是压缩代码
+            removeAttributeQuotes: true, //去除属性双引号
+        },
         //设为true会在文件尾部增加hash值，防止缓存的影响
         hash: true,
         //需要打包的模块
-        chunks: [`${name}`,]
+        chunks: [`${name}`,'common','vendor']
     }
 }
 
@@ -237,11 +259,18 @@ function getHtmlConfig(name) {
  * @return: 入口数组
  */
 function setEntry() {
-    let entery = fs.readdirSync(`${__dirname}/src/views`).reduce((entries, dir) => {
+    let entery = {
+        // main: `${__dirname}/src/css/main.js`
+    }
+    let pageJs = fs.readdirSync(`${__dirname}/src/views`).reduce((entries, dir) => {
         let jsFile = path.join(`${__dirname}/src/views`, dir, `${dir}.js`)
         if (fs.existsSync(jsFile)) {  // 如果js存在
             entries[dir] = jsFile
+
+
         }
         return entries
     }, {})
+    Object.assign(entery, pageJs)
+    return entery
 }

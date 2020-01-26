@@ -3,16 +3,13 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-17 14:59:49
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-23 13:23:32
+ * @LastEditTime : 2020-01-26 19:24:25
  */
-require('js/main.js')
 require('./index.scss')
-
-let b = require('js/b')
 
 import myimg from 'img/index.png'
 
-import Compo from '@/compo/compo.html'
+import Compo from '_c/compo'
 // import $ from 'expose-loader?$!jquery'      //内联暴露全局变量
 // import $ from 'jquery'
 console.log($)
