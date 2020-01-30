@@ -3,11 +3,12 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-23 12:53:04
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-30 13:49:56
+ * @LastEditTime : 2020-01-30 14:07:19
  -->
 # 安装依赖
 ```
 yarn install
+如果node-sass 包拉的很慢请切换淘宝的镜像源（yarn config set sass-binary-site http://npm.taobao.org/mirrors/node-sass）
 ``` 
 # 开发环境
 ```
