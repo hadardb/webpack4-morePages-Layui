@@ -3,7 +3,7 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-23 12:53:04
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-30 13:29:27
+ * @LastEditTime : 2020-01-30 13:49:56
  -->
 # 安装依赖
 ```
@@ -26,7 +26,7 @@ npm run commit
 2. label
 3. scss
 4. art-template
-5. layui
+5. layui   （需要的自己将layui放入plugins文件夹， git拉下来的时间实在太长，受不了）
 6. jest
 
 # 目录结构说明
