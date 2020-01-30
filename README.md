@@ -3,7 +3,7 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-23 12:53:04
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-27 12:35:26
+ * @LastEditTime : 2020-01-30 13:29:27
  -->
 # 安装依赖
 ```
@@ -17,6 +17,18 @@ npm run dev
 ```
 npm run build
 ```
+# 代码git提交
+```
+npm run commit
+```
+# 技术栈
+1. webpack
+2. label
+3. scss
+4. art-template
+5. layui
+6. jest
+
 # 目录结构说明
 ```
 |-- 目录
@@ -76,6 +88,8 @@ npm run build
 |  |     |   └─index.scss
 ├─mock      // mock数据
 |  └a.json
+├─test      // 测试目录
+|  └tools.test.js   // 测试文件
 ├─dist      // 生产目录
 ├─build     // 开发目录
 ```

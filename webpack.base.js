@@ -3,7 +3,7 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-15 11:15:03
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-26 18:52:41
+ * @LastEditTime : 2020-01-27 16:11:18
  */
 /*
  * @name: 文件
@@ -91,7 +91,14 @@ module.exports = {
                         loader: 'babel-loader',
                         options: {
                             presets: [
-                                '@babel/preset-env/'
+                                [
+                                    '@babel/preset-env',
+                                    {
+                                        targets: {
+                                            node: 'current',
+                                        },
+                                    },
+                                ],
                             ],
                             plugins: [
                                 "@babel/plugin-transform-runtime"
@@ -248,7 +255,7 @@ function getHtmlConfig(name) {
         //设为true会在文件尾部增加hash值，防止缓存的影响
         hash: true,
         //需要打包的模块
-        chunks: [`${name}`,'common','vendor']
+        chunks: [`${name}`, 'common', 'vendor']
     }
 }
 
