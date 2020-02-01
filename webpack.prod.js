@@ -3,7 +3,7 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-13 15:13:36
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-26 19:02:00
+ * @LastEditTime : 2020-01-30 23:48:52
  */
 const path = require('path')
 const { smart } = require('webpack-merge')
@@ -11,6 +11,7 @@ const base = require('./webpack.base')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')   // 压缩css
 const TerserJSPlugin = require('terser-webpack-plugin');    // 压缩js
 const webpack = require('webpack')
+const copyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = smart(base, {
     mode: 'production', // 模式   production  development
@@ -51,6 +52,13 @@ module.exports = smart(base, {
             // 内部会进行计算 不能直接写字符串 输入 'production' 会被转义为production 变量
             DEV: JSON.stringify('production'),
         }),
+        // 拷贝文件
+        new copyWebpackPlugin([
+            {
+                from: `${__dirname}/src/plugins`,
+                to: './plugins'
+            },
+        ])
     ],
     // 优化项
     optimization: {

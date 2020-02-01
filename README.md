@@ -3,7 +3,7 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-23 12:53:04
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-30 14:07:19
+ * @LastEditTime : 2020-01-30 23:48:17
  -->
 # 安装依赖
 ```
@@ -45,20 +45,20 @@ npm run commit
 ├─src                   // 源文件目录
 |  ├─views              // 页面文件
 |  |   ├─test           // test页面
-|  |   |  ├─test.css    // test的css
-|  |   |  ├─test.html   // test的html
-|  |   |  └test.js      // test的js
+|  |   |  ├─index.css    // test的css
+|  |   |  ├─index.html   // test的html
+|  |   |  ├─index.js      // test的js
 |  |   ├─index          // 如上
 |  |   |   ├─index.html
 |  |   |   ├─index.js
-|  |   |   └index.scss
+|  |   |   ├─index.scss
 |  |   ├─layout         // 使用了art组件
-|  |   |   ├─layout.html
-|  |   |   ├─layout.js
+|  |   |   ├─index.html
+|  |   |   ├─index.js
 |  |   ├─myLayui          // 静态使用layui
-|  |   |   ├─myLayui.html
-|  |   |   ├─myLayui.js
-|  |   |   └myLayui.scss
+|  |   |   ├─index.html
+|  |   |   ├─index.js
+|  |   |   ├─index.scss
 |  ├─libs             // 存放公共方法
 |  |   ├─axios.js       // axios方法
 |  |   ├─tools.js       // 存放与业务无关的工具方法
@@ -70,6 +70,8 @@ npm run commit
 |  |  ├─icon1.png       
 |  |  └index.png
 |  ├─font               // 字体目录
+|  ├─mock      // mock数据
+|  |  ├─a.json
 |  ├─css                // 通用css目录
 |  |  ├─main.scss       // 将所有的通用变量、mixin
 |  |  ├─_variable.scss  // 存放变量
@@ -87,8 +89,7 @@ npm run commit
 |  |     |   ├─index.art
 |  |     |   ├─index.js
 |  |     |   └─index.scss
-├─mock      // mock数据
-|  └a.json
+
 ├─test      // 测试目录
 |  └tools.test.js   // 测试文件
 ├─dist      // 生产目录

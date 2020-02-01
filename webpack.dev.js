@@ -3,14 +3,15 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-13 15:13:36
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-26 18:40:42
+ * @LastEditTime : 2020-01-30 23:48:40
  */
 const path = require('path')
 const { smart } = require('webpack-merge')
 const base = require('./webpack.base')
 const webpack = require('webpack')
+const copyWebpackPlugin = require('copy-webpack-plugin')
 
-const PORT = 3000   // 配置端口号
+const PORT = 3001   // 配置端口号
 
 module.exports = smart(base,{
     mode: 'development', // 模式   production  development
@@ -20,6 +21,17 @@ module.exports = smart(base,{
             // 内部会进行计算 不能直接写字符串 输入 'production' 会被转义为production 变量
             DEV: JSON.stringify('development'),
         }),
+        // 拷贝文件
+        new copyWebpackPlugin([
+            {
+                from: `${__dirname}/src/plugins`,
+                to: './plugins'
+            },
+            {
+                from: `${__dirname}/src/mock`,
+                to: './mock'
+            }
+        ])
     ],
     module:{
         rules:[

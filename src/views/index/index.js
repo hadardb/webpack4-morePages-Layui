@@ -3,10 +3,10 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-17 14:59:49
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-26 19:24:25
+ * @LastEditTime : 2020-02-01 16:04:49
  */
 require('./index.scss')
-
+// require('@babel/polyfill')
 import myimg from 'img/index.png'
 
 import Compo from '_c/compo'
@@ -24,5 +24,8 @@ document.body.appendChild(image)
 let bodyHtml = document.body.innerHTML
 document.body.innerHTML = bodyHtml + Compo
 console.log(Compo)
+
+Object.assign({})
+
 
 console.log('nih12312ao')

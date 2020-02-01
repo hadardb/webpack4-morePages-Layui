@@ -3,7 +3,7 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-15 11:15:03
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-27 16:11:18
+ * @LastEditTime : 2020-02-01 16:05:20
  */
 /*
  * @name: 文件
@@ -21,7 +21,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')   
 const TerserJSPlugin = require('terser-webpack-plugin');    // 压缩js
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const copyWebpackPlugin = require('copy-webpack-plugin')
+
 
 // bannerPlugin  // 内置 为js添加共同头部注释
 module.exports = {
@@ -88,22 +88,7 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: [
-                                [
-                                    '@babel/preset-env',
-                                    {
-                                        targets: {
-                                            node: 'current',
-                                        },
-                                    },
-                                ],
-                            ],
-                            plugins: [
-                                "@babel/plugin-transform-runtime"
-                            ]
-                        }
+                        loader: 'babel-loader'
                     }
                 ]
             },
@@ -221,17 +206,9 @@ function setPlugins() {
 
         // 指定引入的依赖补引入某些用不到的子依赖，以减小整体资源大小
         // new webpack.IgnorePlugin(),
-
-        // 拷贝文件
-        new copyWebpackPlugin([
-            {
-                from: `${__dirname}/src/plugins`,
-                to: './plugins'
-            }
-        ])
     ]
     fs.readdirSync(`${__dirname}/src/views`).reduce((entries, dir) => {
-        let jsFile = path.join(`${__dirname}/src/views`, dir, `${dir}.js`)
+        let jsFile = path.join(`${__dirname}/src/views`, dir, `index.js`)
         if (fs.existsSync(jsFile)) {  // 如果js存在
             data.push(new HtmlWebpackPlugin(getHtmlConfig(dir)))
         }
@@ -242,7 +219,7 @@ function setPlugins() {
 // 统一创建html插件
 function getHtmlConfig(name) {
     return {
-        template: `./src/views/${name}/${name}.html`,
+        template: `./src/views/${name}/index.html`,
         filename: `./${name}.html`,
         title: name,
         // 设置为true或'body'会将js模块放入模板底部，设置为'head'会将js模块放入head中
@@ -270,7 +247,7 @@ function setEntry() {
         // main: `${__dirname}/src/css/main.js`
     }
     let pageJs = fs.readdirSync(`${__dirname}/src/views`).reduce((entries, dir) => {
-        let jsFile = path.join(`${__dirname}/src/views`, dir, `${dir}.js`)
+        let jsFile = path.join(`${__dirname}/src/views`, dir, `index.js`)
         if (fs.existsSync(jsFile)) {  // 如果js存在
             entries[dir] = jsFile
 
