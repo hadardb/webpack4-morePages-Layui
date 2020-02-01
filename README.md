@@ -3,7 +3,7 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-23 12:53:04
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-30 23:48:17
+ * @LastEditTime : 2020-02-01 18:18:49
  -->
 # 安装依赖
 ```
@@ -24,7 +24,7 @@ npm run commit
 ```
 # 技术栈
 1. webpack
-2. label
+2. babel
 3. scss
 4. art-template
 5. layui   （需要的自己将layui放入plugins文件夹， git拉下来的时间实在太长，受不了）
@@ -82,13 +82,13 @@ npm run commit
 |  |  |    └_ceshi.scss // 每个function 单独一个文件
 |  ├─components         // 通用组件
 |  |     ├─compo            // 组件文件夹 使用原生的html
-|  |     |   ├─index.html
-|  |     |   ├─index.js
-|  |     |   └─index.scss
+|  |     |   ├─compo.html
+|  |     |   ├─compo.js
+|  |     |   └─compo.scss
 |  |     ├─layout            // 组件文件夹  使用art-template
-|  |     |   ├─index.art
-|  |     |   ├─index.js
-|  |     |   └─index.scss
+|  |     |   ├─layout.art
+|  |     |   ├─layout.js
+|  |     |   └─layout.scss
 
 ├─test      // 测试目录
 |  └tools.test.js   // 测试文件
