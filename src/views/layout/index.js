@@ -3,9 +3,9 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-24 21:47:18
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-26 17:59:50
+ * @LastEditTime : 2020-02-01 18:05:25
  */
-import render from '_c/layout/index.js'
+import render from '_c/layout/layout.js'
 console.log(render)
 const data = {
     title: 'My Page',
