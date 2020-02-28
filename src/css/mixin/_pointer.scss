@@ -1,0 +1,7 @@
+// 鼠标上移样式
+@mixin pointer {
+    cursor: pointer;
+    &:hover{
+        color: $hoverColor;
+    }
+  }

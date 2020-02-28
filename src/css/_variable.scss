@@ -1,15 +1,12 @@
 // 变量
 
-$a: 250px;
+$boder: white 1px solid;
+$yellow: #ffe700;
+// html节点字体大小
+$rootFontSize: 16;
+$tabsHeeight: 100px;
+$footerHeight: 140px;
 
-/* common */
-@font-face {
-    font-family: crystalc;
-    src: url("../../font/crystalc.ttf"), url("../../font/crystalc.woff") format('woff');
-}
 
-@font-face {
-    /* 思源黑体 CN */
-    font-family: syht;
-    src: url("../../font/syht.otf"), url("../../font/syht.woff") format('woff');
-}
+// 鼠标选中颜色
+$hoverColor:#5474ed;

@@ -1,0 +1,18 @@
+// 下次再遇到到写个方法
+@mixin boxShadow( $color: black ){
+    box-shadow: 0 0.3px 0.6px rgba($color, 0.056),
+        0 0.7px 1.3px rgba($color, 0.081),
+        0 1.3px 2.5px rgba($color, 0.1),
+        0 2.2px 4.5px rgba($color, 0.119),
+        0 4.2px 8.4px rgba($color, 0.144),
+        0 10px 20px rgba($color, 0.2);
+}
+
+@mixin boxShadowBlue {
+    box-shadow: 0 0.3px 0.6px rgba(36, 106, 217, 0.056),
+        0 0.7px 1.3px rgba(36, 106, 217, 0.081),
+        0 1.3px 2.5px rgba(36, 106, 217, 0.1),
+        0 2.2px 4.5px rgba(36, 106, 217, 0.119),
+        0 4.2px 8.4px rgba(36, 106, 217, 0.144),
+        0 10px 20px rgba(36, 106, 217, 0.2);
+}

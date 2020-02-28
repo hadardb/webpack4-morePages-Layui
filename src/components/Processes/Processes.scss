@@ -1,0 +1,77 @@
+$headerColor : #aaaaaa;
+$headerColorSuccsess: #3d79e0;
+
+$height: 20;
+$newHeight: $height+px;
+$lineHeight: $height+1+px;
+$boderWidth: 2px;
+.processes-from {
+    // overflow: hidden;
+    @include boxShadow(#888)
+}
+
+
+
+.processes-header {
+    display: flex;
+    border-bottom: 1px solid #eaf2ff;
+}
+
+.processes-header-item {
+    height: 50px;
+    line-height: 50px;
+    color: $headerColor;
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.processes-header-item span:last-child {
+    margin-left: 10px;
+}
+
+
+.processes-header-item span:first-child {
+    display: inline-block;
+    width: $newHeight;
+    height: $newHeight;
+    border-radius: $newHeight;
+    line-height: $lineHeight;
+    text-align: center;
+    border: $boderWidth solid $headerColor;
+    color: $headerColor;
+}
+
+.processes-header--success {
+    color: $headerColorSuccsess;
+    border-bottom: $headerColorSuccsess 2px solid;
+    cursor: pointer;
+    & span:first-child {
+        border-color: $headerColorSuccsess;
+        color: white;
+        background-color: $headerColorSuccsess;
+    }
+}
+
+.processes-footer{
+    padding: 50px 0 70px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.processes-footer-item{
+    height: 50px;
+    line-height: 50px;
+    width: 130px;
+    background-color: $headerColorSuccsess;
+    color: white;
+    border-radius: 6px;
+    margin: 0 20px;
+    cursor: pointer;
+}
+.processes-footer-item:last-child{
+    background-color: #c2c2c2;
+}

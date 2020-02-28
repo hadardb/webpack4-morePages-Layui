@@ -8,10 +8,10 @@
 import axios from './index'
 
 export const getSiteList = (data = null) => {
-    return axios.request({
-      method: 'post',
-      url: 'api/agency/register/info',
-     data: data
-    })
-  }
+	return axios.request({
+		method: 'post',
+		url: 'api/agency/register/info',
+		data: data
+	})
+}
   

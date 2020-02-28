@@ -1,0 +1,90 @@
+// 通用class
+
+body,html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body {
+    font-size: 16px;
+    color: #333333;
+    min-width: 1280px;
+}
+
+
+.pointer-events{
+    pointer-events:none;
+    color: #999 !important;
+    
+}
+
+// 文字段落空两格
+.textIndent{
+    text-indent: 2em;
+}
+// 鼠标上移样式
+.pointer {
+    @include pointer;
+}
+
+// 面包屑
+.page-guide{
+    padding: 20px 0;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 14px;
+}
+
+// 统一标题
+.title{
+    margin: 40px 0 20px;
+}
+
+// 统一ztree 样式
+.ztree ul li{
+    margin: 15px 0;
+}
+.ztree li span.button{
+    // display: none;
+}
+.ztree li ul.line{
+    background-image: none;
+}
+// 每个页面的内容的最小高度
+section{
+    min-height: calc( 100% - #{$footerHeight} - #{$tabsHeeight} - 1px);
+}
+
+// 列表页title的样式
+header.nav-title{
+    border-bottom: 1px solid #e6e6e6;
+
+    &>div {
+        padding: 10px 0;
+        display: inline-block;
+        border-bottom: 2px solid $hoverColor;
+        font-size: 22px;
+    }
+}
+
+// 列表页title的间距
+.nav{
+    margin-top: 45px;
+    margin-bottom: 50px;
+}
+
+// 通用带底部阴影的分割线
+.header-line {
+    width: 100%;
+    height: 1px;
+    @include boxShadow(#888);
+}
+
+// 分页条目样式
+#Paging {
+    text-align: center;
+    margin: 35px 0 50px;
+}
+// table 最小高度
+.container-table{
+    min-height: 400px;
+}

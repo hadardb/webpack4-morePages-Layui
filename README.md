@@ -2,13 +2,15 @@
  * @name: 文件
  * @Author: Haojin Sun
  * @Date: 2020-01-23 12:53:04
- * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-02-01 18:18:49
+ * @LastEditors: Haojin Sun
+ * @LastEditTime: 2020-02-28 14:53:50
  -->
 # 安装依赖
 ```
 yarn install
 如果node-sass 包拉的很慢请切换淘宝的镜像源（yarn config set sass-binary-site http://npm.taobao.org/mirrors/node-sass）
+node  下载地址  http://nodejs.cn/download/
+yarn 下载地址   https://yarn.bootcss.com/
 ``` 
 # 开发环境
 ```
@@ -22,13 +24,27 @@ npm run build
 ```
 npm run commit
 ```
+# 整体架构说明
+本项目是基于webpack4搭建的多页面应用，相对于传统前端项目有了较大变化：
+1. 采用scss与art-tamplate做组件化开发
+2. 使用axios制作远程接口
+3. 使用babel与autoprefixer做js与css的兼容处理
+4. 添加文件hash后缀，防止缓存
+5. 按需引入函数方法，更小的文件体积
+6. 生产环境下代码自动压缩
+7. 开发环境下生成map文件追踪代码
+8. 支持单元测试与集成测试
+9. 更多的可扩展性
+
 # 技术栈
-1. webpack
-2. babel
+1. webpack@4
+2. babel@7
 3. scss
-4. art-template
-5. layui   （需要的自己将layui放入plugins文件夹， git拉下来的时间实在太长，受不了）
-6. jest
+4. art-template@4.0
+5. layui@2.6
+6. ESLint
+7. Jest@25.1   
+8. axios@0.19
 
 # 目录结构说明
 ```
@@ -47,18 +63,18 @@ npm run commit
 |  |   ├─test           // test页面
 |  |   |  ├─index.css    // test的css
 |  |   |  ├─index.html   // test的html
-|  |   |  ├─index.js      // test的js
+|  |   |  └index.js      // test的js
 |  |   ├─index          // 如上
 |  |   |   ├─index.html
 |  |   |   ├─index.js
-|  |   |   ├─index.scss
+|  |   |   └index.scss
 |  |   ├─layout         // 使用了art组件
 |  |   |   ├─index.html
 |  |   |   ├─index.js
 |  |   ├─myLayui          // 静态使用layui
 |  |   |   ├─index.html
 |  |   |   ├─index.js
-|  |   |   ├─index.scss
+|  |   |   └index.scss
 |  ├─libs             // 存放公共方法
 |  |   ├─axios.js       // axios方法
 |  |   ├─tools.js       // 存放与业务无关的工具方法

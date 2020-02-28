@@ -1,0 +1,231 @@
+
+$border: 1px solid #ebebeb;
+.advisory{
+    border: $border;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.advisory-left,.advisory-right{
+    display: inline-block;
+}
+.advisory-left{
+    width: 70%;
+    border-right: $border;
+    & > div {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+.advisory-right{
+    width: 30%;
+}
+.advisory-title,.advisory-questionTitle{
+    height: 50px;
+    border-bottom: $border;
+}
+.advisory-title{
+    display: flex;
+    align-items: center;
+    border-bottom: $border;
+    & i {
+        // background-image: url('../../img/supermarketHome/zhineng.png');
+        background-color: white;
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 76px;
+        height: 76px;
+        border-radius: 46px;
+        border-bottom: $border ;
+        margin-top: 25px;
+        display: inline-block;
+        z-index: 99;
+    }
+}
+
+#title{
+    margin-left: 20px;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.advisory-content,.advisory-questionList{
+    // height: 450px;  
+    box-sizing: border-box;
+}
+
+.advisory-content{
+    padding-top: 45px;
+    padding-bottom: 45px;
+    border-bottom: $border; 
+    background-color: #f5f8fa;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+
+.advisory-content-pack{
+    margin: 15px 0;
+    clear: both;
+}
+
+.advisory-content-word{
+    background-color: white;
+    padding: 15px 24px;
+    border-radius: 10px;
+    display: inline-block;
+    position: relative;
+    clear: both;
+}
+
+
+
+.advisory-content-ai::before{
+    content:'';
+    border: 25px solid rgba(0,0,0,0);
+    border-bottom: 18px solid white;
+    position: absolute;
+    left: -15px;
+    bottom: 0;
+}
+
+.advisory-content-pack-user{
+    float: right;
+    
+}
+
+
+.advisory-content-user::after{
+    content:'';
+    border: 25px solid rgba(0,0,0,0);
+    border-bottom: 18px solid white;
+    position: absolute;
+    right: -15px;
+    bottom: 0;
+}
+
+.advisory-content-answer{
+    & > div {
+
+    }
+}
+.advisory-content-answer-title{
+    margin-bottom: 15px;
+}
+
+.advisory-content-answer-content{
+    padding: 15px 0 15px 20px;
+    border-top: 1px dashed #ebebeb;
+    border-bottom: 1px dashed #ebebeb;
+    list-style-type:none;
+    & div{
+        line-height: 24px;
+    }
+}
+
+.advisory-content-answer-content-name::before{
+    content: '●';
+    color: #5283e1;
+    position: absolute;
+    left: -20px;
+    bottom: 0;
+}
+
+.advisory-content-answer-files-name,.advisory-content-answer-content-name{
+    margin-top: 6px;
+    margin-bottom: 6px;
+    position: relative;
+}
+
+.advisory-content-answer-files{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    & a{
+        color: #5283e1;
+    }
+}
+
+.advisory-content-ai-verify{
+    display: inline-block;
+    margin-left: 45px;
+    & img{
+        margin-right: 15px;
+        cursor: pointer;
+    }
+}
+.advisory-input,.advisory-contact{
+    height: 165px;
+    padding-bottom: 20px;
+}
+
+.advisory-input{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#searchInfo{
+    width: 100%;
+    height: 80px;
+    border: none;
+    margin-top: 20px;
+    resize: none;
+}
+#search,.advisory-contact-value{
+    padding: 8px 20px;
+}
+#search{
+    background-color: #5283e1;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.advisory-questionTitle{
+    text-align: center;
+    line-height: 50px;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+#questionList{
+    list-style-type: none;
+}
+
+.advisory-questionList{
+    padding: 20px 20px 0 40px;
+}
+
+.advisory-questionList-item{
+    padding: 6px 0;
+    position: relative;
+    cursor: pointer;
+}
+
+.advisory-questionList-item:hover{
+    color: #5283e1;
+}
+
+.advisory-questionList-item::before{
+    content: '●';
+    color: #ffba17;
+    position: absolute;
+    left: -20px;
+    top: 7px;
+}
+
+.advisory-contact{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.advisory-contact-value{
+    color: #5283e1;
+}

@@ -1,0 +1,11 @@
+// 定义 px 转化为 % 的函数
+$WindowWidth : 1920;
+$WindowHeight : 1200;
+@function pxtobfb ($px) {
+    @return $px / $WindowWidth * 100#{'%'};
+}
+
+@function pxtobfbHeight ($px) {
+    @return $px / $WindowHeight * 100#{'%'};
+}
+

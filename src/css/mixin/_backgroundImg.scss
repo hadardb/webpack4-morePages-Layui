@@ -1,0 +1,10 @@
+@mixin backgroundImg {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+@mixin backgroundBigImg{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
